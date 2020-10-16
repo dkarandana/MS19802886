@@ -38,7 +38,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Calendar"
-        component={CalenarNavigator}
+        component={CalendarNavigator}
         options={{
           tabBarIcon: ({ color }) => <AntDesign name="calendar" size={24} color="black" />,
         }}
@@ -92,17 +92,17 @@ function RecordsNavigator() {
   );
 }
 
-const CalenarScreenStack = createStackNavigator<CalendarParamList>();
+const CalendarScreenStack = createStackNavigator<CalendarParamList>();
 
-function CalenarNavigator() {
+function CalendarNavigator() {
   return (
-    <CalenarScreenStack.Navigator>
-      <CalenarScreenStack.Screen
+    <CalendarScreenStack.Navigator>
+      <CalendarScreenStack.Screen
         name="CalendarScreen"
         component={CalendarScreen}
         options={{ headerTitle: 'Calendar Title' }}
       />
-    </CalenarScreenStack.Navigator>
+    </CalendarScreenStack.Navigator>
   );
 }
 
