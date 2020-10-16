@@ -1,13 +1,17 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { AntDesign } from '@expo/vector-icons';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ProfileScreen from '../screens/ProfileScreen';
+import RecordsScreen from '../screens/RecordsScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import ChallengesScreen from '../screens/ChallengesScreen';
+
+import { BottomTabParamList, ProfileParamList, RecordsParamList, CalendarParamList, ChallengesParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,20 +20,34 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Profile"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Profile"
+        component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color="black" />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Records"
+        component={RecordsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="linechart" size={24} color="black" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Calendar"
+        component={CalenarNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name="calendar" size={24} color="black" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Challenges"
+        component={ChallengesNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name="Safety" size={24} color="black" />,
         }}
       />
     </BottomTab.Navigator>
@@ -44,30 +62,60 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+
+const ProfileScreenStack = createStackNavigator<ProfileParamList>();
+
+function ProfileNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <ProfileScreenStack.Navigator>
+      <ProfileScreenStack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{ headerTitle: 'Profile Title' }}
       />
-    </TabOneStack.Navigator>
+    </ProfileScreenStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const RecordsScreenStack = createStackNavigator<RecordsParamList>();
 
-function TabTwoNavigator() {
+function RecordsNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <RecordsScreenStack.Navigator>
+      <RecordsScreenStack.Screen
+        name="RecordsScreen"
+        component={RecordsScreen}
+        options={{ headerTitle: 'Records Title' }}
       />
-    </TabTwoStack.Navigator>
+    </RecordsScreenStack.Navigator>
+  );
+}
+
+const CalenarScreenStack = createStackNavigator<CalendarParamList>();
+
+function CalenarNavigator() {
+  return (
+    <CalenarScreenStack.Navigator>
+      <CalenarScreenStack.Screen
+        name="CalendarScreen"
+        component={CalendarScreen}
+        options={{ headerTitle: 'Calendar Title' }}
+      />
+    </CalenarScreenStack.Navigator>
+  );
+}
+
+const ChallengesScreenStack = createStackNavigator<ChallengesParamList>();
+
+function ChallengesNavigator() {
+  return (
+    <ChallengesScreenStack.Navigator>
+      <ChallengesScreenStack.Screen
+        name="ChallengesScreen"
+        component={ChallengesScreen}
+        options={{ headerTitle: 'Challenges Title' }}
+      />
+    </ChallengesScreenStack.Navigator>
   );
 }
