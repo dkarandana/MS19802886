@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
-import AppButton from '../components/AppButton';
-import Colors from '../utils/colors';
 import useStatusBar from '../hooks/useStatusBar';
 import { Button } from 'react-native-ios-kit';  
 
@@ -26,11 +24,11 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <View style={{flex: 1, flexDirection: 'column',padding:30}}>
 
-      <View style={{flex: 1,backgroundColor: 'white'}}/>
-      <View style={{flex: 1,backgroundColor: 'white'}}>
-        <Title3 style={{textAlign:'center'}}>Create an account or sign in</Title3>
+      <View style={{flex: 1}}/>
+      <View style={{flex: 1}}>
+        <Title3 style={{textAlign:'center'}}>Create an account or sign in 2</Title3>
       </View>
-      <View style={{flex: 2,  backgroundColor: 'skyblue',alignItems:'center'}}>
+      <View style={{flex: 2,  backgroundColor: 'blue',alignItems:'center'}}>
         <Image style={styles.loginImage} source={require('../assets/images/account-creation.gif')}/>
       </View>
       <View style={{flex: 2,  backgroundColor: 'white'}}>

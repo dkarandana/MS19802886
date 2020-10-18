@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from '../components/Themed';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 export default function CalendarScreen() {
   return (

@@ -19,14 +19,27 @@ export default function App() {
   
   const theme = {
     ...DefaultTheme,
-    primaryColor: 'tomato',
-    primaryLightColor: color('tomato')
+    primaryColor: 'purple',
+    primaryLightColor: color('blue')
       .lighten(0.2)
       .rgb()
       .string(),
-      textColor:'red',
+    textColor:'gold',
     disabledColor: 'yellow',
+    backgroundColor:'#444'
   };
+/*
+  primaryColor: string,
+  primaryLightColor: string,
+  disabledColor: string,
+  backgroundColor: string,
+  barColor: string,
+  dividerColor: string,
+  textColor: string,
+  placeholderColor: string,
+  footnoteColor: string,
+  footnoteBackgroundColor: string,
+  positiveColor: string,*/
 
   if (!isLoadingComplete) {
     return null;

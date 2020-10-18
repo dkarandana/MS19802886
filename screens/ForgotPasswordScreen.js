@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
-import Colors from '../utils/colors';
 import SafeView from '../components/SafeView';
 import Form from '../components/Forms/Form';
 import FormField from '../components/Forms/FormField';
@@ -57,7 +56,7 @@ export default function ForgotPasswordScreen({ navigation }) {
       <IconButton
         style={styles.backButton}
         iconName="keyboard-backspace"
-        color={Colors.white}
+
         size={30}
         onPress={() => navigation.goBack()}
       />
@@ -68,7 +67,6 @@ export default function ForgotPasswordScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     padding: 15,
-    backgroundColor: Colors.mediumGrey
   },
   backButton: {
     justifyContent: 'center',
