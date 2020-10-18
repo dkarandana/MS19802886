@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Text, View} from '../components/Themed';
-import { Button } from 'react-native';
 import useStatusBar from '../hooks/useStatusBar';
 import { logout } from '../components/Firebase/firebase';
+import { Button } from 'react-native-ios-kit';
 
 export default function ProfileScreen() {
   useStatusBar('dark-content');
@@ -17,7 +17,7 @@ export default function ProfileScreen() {
   return (
     <View>
       <Text>Profile</Text>
-      <Button title="Sign Out" onPress={handleSignOut} />
+      <Button inline rounded centered onPress={handleSignOut} >Logout</Button>
     </View>
   );
 }

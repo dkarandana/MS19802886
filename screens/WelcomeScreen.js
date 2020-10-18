@@ -4,53 +4,54 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import AppButton from '../components/AppButton';
 import Colors from '../utils/colors';
 import useStatusBar from '../hooks/useStatusBar';
+import { Button } from 'react-native-ios-kit';  
+
+import {
+  Title1,
+  Title2,
+  Title3,
+  Headline,
+  Body,
+  Callout,
+  Subhead,
+  Footnote,
+  Caption1,
+  Caption2,
+  withTheme,
+} from 'react-native-ios-kit';
 
 export default function WelcomeScreen({ navigation }) {
   useStatusBar('light-content');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image source={require('../assets/images/dkarandana.jpg')} style={styles.logo} />
-        <Text style={styles.subtitle}>Dhananjaya's Expo Project</Text>
+    <View style={{flex: 1, flexDirection: 'column',padding:30}}>
+
+      <View style={{flex: 1,backgroundColor: 'white'}}/>
+      <View style={{flex: 1,backgroundColor: 'white'}}>
+        <Title3 style={{textAlign:'center'}}>Create an account or sign in</Title3>
       </View>
-      <View style={styles.buttonContainer}>
-        <AppButton title="Login" onPress={() => navigation.navigate('Login')} />
-        <AppButton
-          title="Register"
-          color="secondary"
-          onPress={() => navigation.navigate('Register')}
-        />
+      <View style={{flex: 2,  backgroundColor: 'skyblue',alignItems:'center'}}>
+        <Image style={styles.loginImage} source={require('../assets/images/account-creation.gif')}/>
+      </View>
+      <View style={{flex: 2,  backgroundColor: 'white'}}>
+        <Button 
+            inline rounded centered 
+            onPress={() => navigation.navigate('Login')} 
+            style={{flex:1,marginBottom:15}} >LOGIN
+            </Button>
+        <Button 
+          inline rounded centered 
+          onPress={() => navigation.navigate('Register')} 
+          style={{flex:1}}>REGISTER
+          </Button>
       </View>
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: Colors.mediumGrey
+  loginImage: {
+    height: '100%'
   },
-  logoContainer: {
-    position: 'absolute',
-    top: 60,
-    alignItems: 'center'
-  },
-  logo: {
-    width: 125,
-    height: 125
-  },
-  subtitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    paddingVertical: 20,
-    color: Colors.primary
-  },
-  buttonContainer: {
-    padding: 20,
-    paddingBottom: 60,
-    width: '100%'
-  }
 });

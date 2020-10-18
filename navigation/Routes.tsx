@@ -6,8 +6,8 @@ import navigationTheme from './navigationTheme';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 import { AuthUserContext } from './AuthUserProvider';
-import LinkingConfiguration from './LinkingConfiguration';
 //import Spinner from '../components/Spinner';
+
 
 export default function Routes() {
   const { user, setUser } = useContext(AuthUserContext);
@@ -33,9 +33,7 @@ export default function Routes() {
   }
 
   return (
-    <NavigationContainer 
-      theme={navigationTheme}
-      linking={LinkingConfiguration}>
+    <NavigationContainer theme={navigationTheme}>
       {user ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
