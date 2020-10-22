@@ -23,6 +23,9 @@ export const storageRef = (uuid:any) =>
     .ref()
     .child(uuid);
 
+export const firebaseDB = () =>
+  firebase.database();
+
 export const logout = () => auth.signOut();
 
 export const passwordReset = (email:string) => auth.sendPasswordResetEmail(email);
