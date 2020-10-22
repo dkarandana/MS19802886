@@ -17,6 +17,12 @@ export const loginWithEmail = (email:string, password:string) =>
 export const registerWithEmail = (email:string, password:string) =>
   auth.createUserWithEmailAndPassword(email, password);
 
+export const storageRef = (uuid:any) =>
+  firebase
+    .storage()
+    .ref()
+    .child(uuid);
+
 export const logout = () => auth.signOut();
 
 export const passwordReset = (email:string) => auth.sendPasswordResetEmail(email);

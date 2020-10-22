@@ -13,27 +13,8 @@ import {
 
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
-import * as firebase from 'firebase';
+import { storageRef } from '../components/Firebase/firebase';
 import uuid from 'uuid';
-
-
-const firebaseConfig = {
-  
-
-  apiKey: "AIzaSyDedn4ZijYs_tBdnlRjXaBKZYqW4TI1pMM",
-    authDomain: "ms19802886-mobile.firebaseapp.com",
-    databaseURL: "https://ms19802886-mobile.firebaseio.com",
-    projectId: "ms19802886-mobile",
-    storageBucket: "ms19802886-mobile.appspot.com",
-    messagingSenderId: "808984137900",
-    appId: "project-808984137900",
-    measurementId: "G-measurement-id"
-};
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
-
 
   export default class App extends React.Component {
     state = {
@@ -197,10 +178,7 @@ if (!firebase.apps.length) {
       xhr.send(null);
     });
   
-    const ref = firebase
-      .storage()
-      .ref()
-      .child(uuid.v4());
+    const ref = storageRef(uuid.v4());
     const snapshot = await ref.put(blob);
   
     // We're done with the blob, close and release it
