@@ -8,10 +8,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ProfileScreen from '../screens/ProfileScreen';
 import RecordsScreen from '../screens/RecordsScreen';
-import CalendarScreen from '../screens/CalendarScreen';
+import AddRecordScreen from '../screens/AddRecordScreen';
 import ChallengesScreen from '../screens/ChallengesScreen';
 
-import { BottomTabParamList, ProfileParamList, RecordsParamList, CalendarParamList, ChallengesParamList } from '../types';
+import { BottomTabParamList, ProfileParamList, RecordsParamList, AddRecordParamList, ChallengesParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -30,17 +30,17 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
+        name="AddRecord"
+        component={AddRecordNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name="calendar" size={24} color="black" />,
+        }}
+      />
+      <BottomTab.Screen
         name="Records"
         component={RecordsNavigator}
         options={{
           tabBarIcon: ({ color }) => <AntDesign name="linechart" size={24} color="black" />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Calendar"
-        component={CalendarNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <AntDesign name="calendar" size={24} color="black" />,
         }}
       />
       <BottomTab.Screen
@@ -92,17 +92,17 @@ function RecordsNavigator() {
   );
 }
 
-const CalendarScreenStack = createStackNavigator<CalendarParamList>();
+const AddRecordScreenStack = createStackNavigator<AddRecordParamList>();
 
-function CalendarNavigator() {
+function AddRecordNavigator() {
   return (
-    <CalendarScreenStack.Navigator>
-      <CalendarScreenStack.Screen
-        name="CalendarScreen"
-        component={CalendarScreen}
-        options={{ headerTitle: 'Calendar Title' }}
+    <AddRecordScreenStack.Navigator>
+      <AddRecordScreenStack.Screen
+        name="AddRecordScreen"
+        component={AddRecordScreen}
+        options={{ headerTitle: 'AddRecord Title' }}
       />
-    </CalendarScreenStack.Navigator>
+    </AddRecordScreenStack.Navigator>
   );
 }
 

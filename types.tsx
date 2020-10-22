@@ -6,7 +6,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Profile: undefined;
   Records: undefined;
-  Calendar: undefined;
+  AddRecord: undefined;
   Challenges: undefined;
 };
 
@@ -18,8 +18,8 @@ export type RecordsParamList = {
   RecordsScreen: undefined;
 };
 
-export type CalendarParamList = {
-  CalendarScreen: undefined;
+export type AddRecordParamList = {
+  AddRecordScreen: undefined;
 };
 
 export type ChallengesParamList = {

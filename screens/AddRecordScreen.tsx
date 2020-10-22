@@ -16,7 +16,7 @@ import * as Permissions from 'expo-permissions';
 import { storageRef } from '../components/Firebase/firebase';
 import uuid from 'uuid';
 
-  export default class App extends React.Component {
+  export default class AddRecord extends React.Component {
     state = {
       image: null,
       uploading: false,

@@ -19,14 +19,11 @@ export default function App() {
   
   const theme = {
     ...DefaultTheme,
-    primaryColor: 'purple',
-    primaryLightColor: color('blue')
-      .lighten(0.2)
-      .rgb()
-      .string(),
-    textColor:'gold',
-    disabledColor: 'yellow',
-    backgroundColor:'#444'
+    primaryColor: '#011640',
+    primaryLightColor: '#1D5A73',
+    textColor:'#044159',
+    disabledColor: '#A6705D',
+    backgroundColor:'#86A69A'
   };
 /*
   primaryColor: string,
