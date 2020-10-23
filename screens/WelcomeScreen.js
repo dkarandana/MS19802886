@@ -22,7 +22,7 @@ export default function WelcomeScreen({ navigation }) {
   useStatusBar('light-content');
 
   return (
-    <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column',padding:30}}>
+    <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column',padding:20}}>
 
       <View style={{flex: 1}}/>
       <View style={{flex: 1}}>
