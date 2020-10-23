@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet,View } from 'react-native';
 import * as Yup from 'yup';
 
 import SafeView from '../components/SafeView';
@@ -10,6 +10,19 @@ import IconButton from '../components/IconButton';
 import FormErrorMessage from '../components/Forms/FormErrorMessage';
 import { registerWithEmail } from '../components/Firebase/firebase';
 import useStatusBar from '../hooks/useStatusBar';
+import {
+  Title1,
+  Title2,
+  Title3,
+  Headline,
+  Body,
+  Callout,
+  Subhead,
+  Footnote,
+  Caption1,
+  Caption2,
+  withTheme,
+} from 'react-native-ios-kit';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -69,7 +82,12 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
-    <SafeView style={styles.container}>
+
+<View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column',padding:30}}>
+
+<View style={{flex: 1,padingTop:30}}/>
+        <Title1 style={{textAlign:'center'}}>Create new account</Title1>
+      <View style={{flex: 4}}>
       <Form
         initialValues={{
           name: '',
@@ -116,7 +134,7 @@ export default function RegisterScreen({ navigation }) {
           rightIcon={confirmPasswordIcon}
           handlePasswordVisibility={handleConfirmPasswordVisibility}
         />
-        <FormButton title={'Register'} />
+        <FormButton title={'REGISTER'} />
         {<FormErrorMessage error={registerError} visible={true} />}
       </Form>
       <IconButton
@@ -125,7 +143,8 @@ export default function RegisterScreen({ navigation }) {
         size={30}
         onPress={() => navigation.goBack()}
       />
-    </SafeView>
+    </View>
+    </View>
   );
 }
 
