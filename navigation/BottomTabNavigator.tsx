@@ -86,7 +86,7 @@ function RecordsNavigator() {
       <RecordsScreenStack.Screen
         name="RecordsScreen"
         component={RecordsScreen}
-        options={{ headerTitle: 'Records Title' }}
+        options={{ headerTitle: 'Records' }}
       />
     </RecordsScreenStack.Navigator>
   );
@@ -114,7 +114,7 @@ function ChallengesNavigator() {
       <ChallengesScreenStack.Screen
         name="ChallengesScreen"
         component={ChallengesScreen}
-        options={{ headerTitle: 'Challenges Title' }}
+        options={{ headerTitle: 'Challenges' }}
       />
     </ChallengesScreenStack.Navigator>
   );

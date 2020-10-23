@@ -13,6 +13,23 @@ import {
   View,
   ImageBackground
   } from 'react-native';
+  import FormField from '../components/Forms/FormField';
+
+  import {
+    Title1,
+    Title2,
+    Title3,
+    Headline,
+    Body,
+    Callout,
+    Subhead,
+    Footnote,
+    Caption1,
+    Caption2,
+    withTheme,
+  } from 'react-native-ios-kit';
+
+import { TextField } from 'react-native-ios-kit';
 
   import { Button } from 'react-native-ios-kit';
 
@@ -82,17 +99,8 @@ const BGimage ='../assets/images/account-creation.gif';
           <ImageBackground source={require('../assets/images/thermometer2.jpg')} style={styles.image}>
             <View style={{padding:30}}>
           {!!image && (
-            <Text
-              style={{
-                fontSize: 20,
-                marginBottom: 20,
-                textAlign: 'center',
-                marginHorizontal: 15,
-              }}>
-              Example: Upload ImagePicker result
-            </Text>
+            <Title3 style={{marginBottom:30,textAlign:'center'}}>Image uploaded successfully</Title3>
           )}
-  
 
             <Button 
             inline rounded centered
@@ -106,6 +114,7 @@ const BGimage ='../assets/images/account-creation.gif';
             style={{flex:1,marginBottom:15}} >TAKE A PHOTO
             </Button>
   
+            
           {this._maybeRenderImage()}
           {this._maybeRenderUploadingOverlay()}
   
@@ -139,13 +148,11 @@ const BGimage ='../assets/images/account-creation.gif';
       if (!image) {
         return;
       }
-  
+
       return (
         <View
           style={{
             marginTop: 30,
-            width: 250,
-            borderRadius: 3,
             elevation: 2,
           }}>
           <View
@@ -158,7 +165,7 @@ const BGimage ='../assets/images/account-creation.gif';
               shadowRadius: 5,
               overflow: 'hidden',
             }}>
-            <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />
+            <Image source={{ uri: image }} style={{ width: 150, height: 150 }} />
           </View>
           <Text
             onPress={this._copyToClipboard}
@@ -166,31 +173,30 @@ const BGimage ='../assets/images/account-creation.gif';
             style={{ paddingVertical: 10, paddingHorizontal: 10 }}>
             Copy to clipboard
           </Text>
-
-          <TextInput
-              style={styles.itemInput}
-              value={image}
-              onChange={this.handleImgChange}
-            />
-          <TextInput
-              style={styles.itemInput}
-              onChange={this.handleChange}
-            />
-            <TextInput
-              style={styles.itemInput}
-              onChange={this.handleEmplIDChange}
-            />
-
-            <TouchableHighlight
-                style = {styles.button}
-                underlayColor= "white"
-                onPress = {this.handleSubmit}
-              >
-              <Text
-                  style={styles.buttonText}>
-                  Add
-              </Text>
-            </TouchableHighlight>
+          
+            <View style={{backgroundColor:'#2a8ab7',padding:30,marginBottom:20}}> 
+                <TextInput
+                    style={styles.itemInput}
+                    value={image}
+                    placeholder="Firestorage URL"
+                    onChange={this.handleImgChange}
+                  />
+                <TextInput
+                    style={styles.itemInput}
+                    placeholder="Name"
+                    onChange={this.handleChange}
+                  />
+                  <TextInput
+                    style={styles.itemInput}
+                    placeholder="Employer ID"
+                    onChange={this.handleEmplIDChange}
+                  />
+            </View>
+            <Button 
+            inline rounded centered
+            onPress = {this.handleSubmit}
+            style={{flex:1,marginBottom:15}} >ADD
+            </Button>
         </View>
       );
     };
@@ -288,14 +294,12 @@ const BGimage ='../assets/images/account-creation.gif';
       justifyContent: "center"
     },
     itemInput: {
-      height: 50,
-      padding: 4,
-      marginRight: 5,
-      fontSize: 23,
-      borderWidth: 1,
-      borderColor: 'white',
-      borderRadius: 8,
-      color: 'white'
+      width: '100%',
+      fontSize: 18,
+      padding:10,
+      color:'#011640',
+      marginBottom:5,
+      backgroundColor:'#fff'
     },
     buttonText: {
       fontSize: 18,

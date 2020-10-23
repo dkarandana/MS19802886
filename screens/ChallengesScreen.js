@@ -1,111 +1,48 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import useStatusBar from '../hooks/useStatusBar';
+import { logout } from '../components/Firebase/firebase';
+import { Button } from 'react-native-ios-kit';
+import { View, StyleSheet, Text, Image } from 'react-native';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableHighlight,
-  Alert
-} from 'react-native';
+  Title1,
+  Title2,
+  Title3,
+  Headline,
+  Body,
+  Callout,
+  Subhead,
+  Footnote,
+  Caption1,
+  Caption2,
+  withTheme,
+} from 'react-native-ios-kit';
 
-import { addItem } from '../services/AddItemService';
-
-
-
-export default class ChallengesScreen extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-        name: '',
-        empId:'123'
-      }
-      this.handleChange = this.handleChange.bind(this);
-      this.handleEmplIDChange = this.handleEmplIDChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+export default function ChallengesScreen() {
+  useStatusBar('dark-content');
+  async function handleSignOut() {
+    try {
+      await logout();
+    } catch (error) {
+      console.log(error);
     }
-    handleChange(e) {
-      this.setState({
-        name: e.nativeEvent.text
-      });
-    }
-
-    handleEmplIDChange(e) {
-      this.setState({
-        empId: e.nativeEvent.text
-      });
-    }
-
-    handleSubmit() {
-      addItem(this.state.name,this.state.empId);
-      Alert.alert(
-        'Item saved successfully'
-       );
-    }
-  render() {
-    return (
-      <View style={styles.main}>
-        <Text style={styles.title}>Add Item</Text>
-        <TextInput
-              style={styles.itemInput}
-              onChange={this.handleChange}
-            />
-            <TextInput
-              style={styles.itemInput}
-              onChange={this.handleEmplIDChange}
-            />
-        <TouchableHighlight
-                style = {styles.button}
-                underlayColor= "white"
-                onPress = {this.handleSubmit}
-              >
-              <Text
-                  style={styles.buttonText}>
-                  Add
-              </Text>
-            </TouchableHighlight>
-      </View>
-    )
   }
+
+  return (
+    <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column'}}>
+      <View style={{flex: 1,padding:30,backgroundColor:'#011640'}}>
+        <Title1 style={{color:'#fff'}}>Stay Safe, Stay Together</Title1>
+        <Title2 style={{color:'#6D96A6'}}>Time to publish data to COVID-19 Balakaya</Title2>
+      </View>
+      <View style={{flex: 1,padding:30,backgroundColor:'#6D96A6'}}>
+          <Button style={{marginTop:20}} inline rounded centered onPress={handleSignOut} >SUBMIT LATEST DATA</Button>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    padding: 30,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: '#2a8ab7'
+  card: {
+    height: '100%',
+    width:'90%'
   },
-  title: {
-    marginBottom: 20,
-    fontSize: 25,
-    textAlign: 'center'
-  },
-  itemInput: {
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111',
-    alignSelf: 'center'
-  },
-  button: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor:'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  }
 });
