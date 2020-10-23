@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ActivityIndicator,
-  Button,
   Clipboard,
   Image,
   Share,
@@ -12,7 +11,10 @@ import {
   StyleSheet,
   Text,
   View,
+  ImageBackground
   } from 'react-native';
+
+  import { Button } from 'react-native-ios-kit';
 
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
@@ -20,6 +22,7 @@ import { storageRef } from '../components/Firebase/firebase';
 import { addItem } from '../services/AddItemService';
 
 import uuid from 'uuid';
+const BGimage ='../assets/images/account-creation.gif';
 
   export default class AddRecord extends React.Component {
 
@@ -75,7 +78,9 @@ import uuid from 'uuid';
       let { image } = this.state;
   
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column'}}>
+          <ImageBackground source={require('../assets/images/thermometer2.jpg')} style={styles.image}>
+            <View style={{padding:30}}>
           {!!image && (
             <Text
               style={{
@@ -88,18 +93,25 @@ import uuid from 'uuid';
             </Text>
           )}
   
-          <Button
+
+            <Button 
+            inline rounded centered
             onPress={this._pickImage}
-            title="Pick an image from camera roll"
-          />
-  
-          <Button onPress={this._takePhoto} title="Take a photo" />
+            style={{flex:1,marginBottom:15}} >PICK AN IMAGE FROM CAMERA ROLL
+            </Button>
+
+            <Button 
+            inline rounded centered
+            onPress={this._takePhoto}
+            style={{flex:1,marginBottom:15}} >TAKE A PHOTO
+            </Button>
   
           {this._maybeRenderImage()}
           {this._maybeRenderUploadingOverlay()}
   
           <StatusBar barStyle="default" />
-          
+          </View>
+          </ImageBackground>
         </View>
       );
     }
@@ -269,6 +281,11 @@ import uuid from 'uuid';
       marginBottom: 20,
       fontSize: 25,
       textAlign: 'center'
+    },
+    image: {
+      flex: 1,
+      resizeMode: "cover",
+      justifyContent: "center"
     },
     itemInput: {
       height: 50,

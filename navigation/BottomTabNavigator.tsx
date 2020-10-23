@@ -33,7 +33,7 @@ export default function BottomTabNavigator() {
         name="AddRecord"
         component={AddRecordNavigator}
         options={{
-          tabBarIcon: ({ color }) => <AntDesign name="calendar" size={24} color="black" />,
+          tabBarIcon: ({ color }) => <AntDesign name="plus" size={24} color="black" />,
         }}
       />
       <BottomTab.Screen
@@ -100,7 +100,7 @@ function AddRecordNavigator() {
       <AddRecordScreenStack.Screen
         name="AddRecordScreen"
         component={AddRecordScreen}
-        options={{ headerTitle: 'AddRecord Title' }}
+        options={{ headerTitle: 'Add Record' }}
       />
     </AddRecordScreenStack.Navigator>
   );
