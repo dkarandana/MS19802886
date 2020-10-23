@@ -5,6 +5,9 @@ import {
   Clipboard,
   Image,
   Share,
+  TextInput,
+  TouchableHighlight,
+  Alert,
   StatusBar,
   StyleSheet,
   Text,
@@ -14,9 +17,50 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import { storageRef } from '../components/Firebase/firebase';
+import { addItem } from '../services/AddItemService';
+
 import uuid from 'uuid';
 
   export default class AddRecord extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: '',
+        empId:'',
+        imageSrc:''
+      }
+      this.handleChange = this.handleChange.bind(this);
+      this.handleEmplIDChange = this.handleEmplIDChange.bind(this);
+      this.handleImgChange = this.handleImgChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(e) {
+      this.setState({
+        name: e.nativeEvent.text
+      });
+    }
+
+    handleEmplIDChange(e) {
+      this.setState({
+        empId: e.nativeEvent.text
+      });
+    }
+
+    handleImgChange(e) {
+      this.setState({
+        imageSrc: e.nativeEvent.text
+      });
+    }
+
+    handleSubmit() {
+      addItem(this.state.name,this.state.empId, this.state.imageSrc);
+      Alert.alert(
+        'Item saved successfully'
+       );
+    }
+
     state = {
       image: null,
       uploading: false,
@@ -55,6 +99,7 @@ import uuid from 'uuid';
           {this._maybeRenderUploadingOverlay()}
   
           <StatusBar barStyle="default" />
+          
         </View>
       );
     }
@@ -101,14 +146,39 @@ import uuid from 'uuid';
               shadowRadius: 5,
               overflow: 'hidden',
             }}>
-            <Image source={{ uri: image }} style={{ width: 250, height: 250 }} />
+            <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />
           </View>
           <Text
             onPress={this._copyToClipboard}
             onLongPress={this._share}
             style={{ paddingVertical: 10, paddingHorizontal: 10 }}>
-            {image}
+            Copy to clipboard
           </Text>
+
+          <TextInput
+              style={styles.itemInput}
+              value={image}
+              onChange={this.handleImgChange}
+            />
+          <TextInput
+              style={styles.itemInput}
+              onChange={this.handleChange}
+            />
+            <TextInput
+              style={styles.itemInput}
+              onChange={this.handleEmplIDChange}
+            />
+
+            <TouchableHighlight
+                style = {styles.button}
+                underlayColor= "white"
+                onPress = {this.handleSubmit}
+              >
+              <Text
+                  style={styles.buttonText}>
+                  Add
+              </Text>
+            </TouchableHighlight>
         </View>
       );
     };
@@ -186,3 +256,45 @@ import uuid from 'uuid';
   
     return await snapshot.ref.getDownloadURL();
   }
+
+  const styles = StyleSheet.create({
+    main: {
+      flex: 1,
+      padding: 30,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      backgroundColor: '#2a8ab7'
+    },
+    title: {
+      marginBottom: 20,
+      fontSize: 25,
+      textAlign: 'center'
+    },
+    itemInput: {
+      height: 50,
+      padding: 4,
+      marginRight: 5,
+      fontSize: 23,
+      borderWidth: 1,
+      borderColor: 'white',
+      borderRadius: 8,
+      color: 'white'
+    },
+    buttonText: {
+      fontSize: 18,
+      color: '#111',
+      alignSelf: 'center'
+    },
+    button: {
+      height: 45,
+      flexDirection: 'row',
+      backgroundColor:'white',
+      borderColor: 'white',
+      borderWidth: 1,
+      borderRadius: 8,
+      marginBottom: 10,
+      marginTop: 10,
+      alignSelf: 'stretch',
+      justifyContent: 'center'
+    }
+  });
