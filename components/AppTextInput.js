@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   },
   rightIconStyles: {
     alignSelf: 'center',
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop:11
   }
 });

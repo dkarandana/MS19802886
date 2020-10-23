@@ -72,7 +72,7 @@ function ProfileNavigator() {
       <ProfileScreenStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile Title' }}
+        options={{ headerTitle: 'Profile' }}
       />
     </ProfileScreenStack.Navigator>
   );

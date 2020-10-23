@@ -13,7 +13,7 @@ export default function AppStack() {
 
   return (
     <Stack.Navigator screenOptions={{
-      headerShown: true,
+      headerShown: false,
       headerStyle: {
         backgroundColor: theme.barColor,
       },
