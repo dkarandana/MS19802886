@@ -22,13 +22,13 @@ export default function WelcomeScreen({ navigation }) {
   useStatusBar('light-content');
 
   return (
-    <View style={{flex: 1, flexDirection: 'column',padding:30}}>
+    <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column',padding:30}}>
 
       <View style={{flex: 1}}/>
       <View style={{flex: 1}}>
-        <Title3 style={{textAlign:'center'}}>Create an account or sign in 2</Title3>
+        <Title1 style={{textAlign:'center'}}>Create an account or sign in</Title1>
       </View>
-      <View style={{flex: 2,  backgroundColor: 'blue',alignItems:'center'}}>
+      <View style={{flex: 2, alignItems:'center'}}>
         <Image style={styles.loginImage} source={require('../assets/images/account-creation.gif')}/>
       </View>
       <View style={{flex: 2,  backgroundColor: 'white'}}>
@@ -50,6 +50,7 @@ export default function WelcomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   loginImage: {
-    height: '100%'
+    height: '100%',
+    width:'90%'
   },
 });

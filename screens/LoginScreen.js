@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
+import {
+  Title1,
+  Title2,
+  Title3,
+  Headline,
+  Body,
+  Callout,
+  Subhead,
+  Footnote,
+  Caption1,
+  Caption2,
+  withTheme,
+} from 'react-native-ios-kit';
+import { Button } from 'react-native-ios-kit'; 
+import { TextField } from 'react-native-ios-kit';
 
 import SafeView from '../components/SafeView';
 import Form from '../components/Forms/Form';
@@ -51,7 +66,10 @@ export default function LoginScreen({ navigation }) {
   }
 
   return (
-    <SafeView style={styles.container}>
+    <View style={{flex: 1,backgroundColor: 'white', flexDirection: 'column',padding:30}}>
+      <View style={{flex: 2,padingTop:30}}/>
+        <Title1 style={{textAlign:'center'}}>Continue with Email</Title1>
+      <View style={{flex: 4}}>
       <Form
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
@@ -77,14 +95,13 @@ export default function LoginScreen({ navigation }) {
           rightIcon={rightIcon}
           handlePasswordVisibility={handlePasswordVisibility}
         />
-        <FormButton title={'Login'} />
+        <View style={{marginTop:30}}>
+          <FormButton title={'LOGIN'} />
+        </View>
         {<FormErrorMessage error={loginError} visible={true} />}
       </Form>
-      <View style={styles.footerButtonContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text>
-        </TouchableOpacity>
       </View>
+      <View style={{flex: 3,  backgroundColor: 'white'}}>
       <IconButton
         style={styles.backButton}
         iconName="keyboard-backspace"
@@ -92,7 +109,8 @@ export default function LoginScreen({ navigation }) {
         size={30}
         onPress={() => navigation.goBack()}
       />
-    </SafeView>
+      </View>
+    </View>
   );
 }
 

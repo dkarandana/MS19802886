@@ -23,7 +23,7 @@ export default function App() {
     primaryLightColor: '#1D5A73',
     textColor:'#044159',
     disabledColor: '#A6705D',
-    backgroundColor:'#86A69A'
+    backgroundColor:'#86A69A'//#86A69A
   };
 /*
   primaryColor: string,

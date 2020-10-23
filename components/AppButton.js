@@ -1,32 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-
+import { Button } from 'react-native-ios-kit'; 
 
 
 export default function AppButton({ title, onPress, color = 'primary' }) {
   return (
-    <TouchableOpacity
-      style={[styles.button, { backgroundColor: '#ccc'}]}
-      onPress={onPress}
-    >
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
+    <Button 
+    inline rounded centered 
+    onPress={onPress}
+    style={{flex:1}}>{title}
+    </Button>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    marginVertical: 10,
-    borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 15,
-    width: '100%'
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '600',
-    textTransform: 'uppercase'
-  }
-});
